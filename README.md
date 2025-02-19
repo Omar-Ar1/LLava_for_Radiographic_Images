@@ -91,8 +91,6 @@ Results are stored in `evaluation_pretrained.json`.
 
 ### **4. `evaluation.py`**
 - Implements `MedicalResponseEvaluator`, which computes:
-  - Exact match (EM)
-  - BLEU and ROUGE scores
   - Clinical relevance metrics
 
 ### **5. `evaluation_base.py`**
