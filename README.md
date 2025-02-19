@@ -110,17 +110,32 @@ Results are stored in `evaluation_pretrained.json`.
 
 ---
 
-## **Results**
+## Evaluation Results
 
-### **Fine-Tuned Model Performance (VQA-RAD)**
-| Metric  | Score |
-|---------|-------|
-| Exact Match (EM) | XX.XX% |
-| BLEU-4 | XX.XX |
-| ROUGE-L | XX.XX |
-| Clinical Accuracy | XX.XX% |
+The model was evaluated using an automated LLM-based scoring system. Below are the comparative results:
 
-(*Replace `XX.XX` with actual values from `evaluation_finetuned.json`*)
+| Metric                  | Pre-Trained Model | Fine-Tuned Model |
+|-------------------------|------------------|------------------|
+| total_responses        | 451.00           | 451.00           |
+| valid_responses        | 426.00           | 407.00           |
+| correct_rate          | 0.51             | 0.47             |
+| incorrect_rate        | 0.42             | 0.48             |
+| neutral_rate         | 0.07             | 0.05             |
+| contradiction_rate    | 0.00             | 0.00             |
+| invalid_format_rate   | 0.06             | 0.10             |
+| average_confidence   | 4.89             | 4.76             |
+| confidence_completeness | 1.00          | 1.00             |
+
+### Key Takeaways
+- The **correct rate** decreased from **51% to 47%**, while the **incorrect rate** increased from **42% to 48%**.
+- The **invalid format rate** increased from **6% to 10%**, indicating more formatting inconsistencies.
+- The **average confidence** of responses slightly dropped from **4.89 to 4.76**.
+- **Contradiction rate remained at 0**, meaning the model did not produce directly conflicting responses.
+  
+The decline in performance may be attributed to several factors:  
+- **Catastrophic forgetting**.
+- - **Misalignment between fine-tuning objectives and evaluation methodology**: The evaluation was conducted using an LLM-as-a-judge framework. While this approach is justified given the nuanced nature of the model's answers and the limitations of standard techniques (ROUGE, BLEU, etc.) in performing soft matching, the judge may still produce misleading or inaccurate evaluations.  
+
 
 ---
 
