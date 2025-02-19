@@ -1,0 +1,20 @@
+451
+[2025-02-17 01:01:49,862] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /usr/users/infonumosintheadmind/ammar_mar/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+{'eval_loss': 0.04861365258693695, 'eval_runtime': 87.3062, 'eval_samples_per_second': 4.112, 'eval_steps_per_second': 1.031, 'epoch': 0.99}
+{'loss': 14.26, 'grad_norm': 0.6408727169036865, 'learning_rate': 0.0001999949143090342, 'epoch': 1.12}
+{'eval_loss': 0.0384359210729599, 'eval_runtime': 87.2378, 'eval_samples_per_second': 4.115, 'eval_steps_per_second': 1.032, 'epoch': 1.99}
+{'loss': 0.1306, 'grad_norm': 0.4052809178829193, 'learning_rate': 0.00018706107903196565, 'epoch': 2.25}
+{'eval_loss': 0.03918764740228653, 'eval_runtime': 87.3441, 'eval_samples_per_second': 4.11, 'eval_steps_per_second': 1.03, 'epoch': 2.99}
+{'loss': 0.0827, 'grad_norm': 0.38342753052711487, 'learning_rate': 0.00015245393718103125, 'epoch': 3.37}
+{'eval_loss': 0.04188278689980507, 'eval_runtime': 87.4898, 'eval_samples_per_second': 4.103, 'eval_steps_per_second': 1.029, 'epoch': 3.99}
+{'loss': 0.0577, 'grad_norm': 0.3401183485984802, 'learning_rate': 0.00010478871846990325, 'epoch': 4.49}
+{'eval_loss': 0.044155191630125046, 'eval_runtime': 87.4256, 'eval_samples_per_second': 4.106, 'eval_steps_per_second': 1.029, 'epoch': 4.99}
+{'loss': 0.0417, 'grad_norm': 0.25999799370765686, 'learning_rate': 5.59313784957705e-05, 'epoch': 5.61}
+{'eval_loss': 0.04988044872879982, 'eval_runtime': 87.376, 'eval_samples_per_second': 4.109, 'eval_steps_per_second': 1.03, 'epoch': 5.99}
+{'loss': 0.0309, 'grad_norm': 0.2738666832447052, 'learning_rate': 1.8044643926127858e-05, 'epoch': 6.74}
+{'eval_loss': 0.0535028912127018, 'eval_runtime': 87.4721, 'eval_samples_per_second': 4.104, 'eval_steps_per_second': 1.029, 'epoch': 6.99}
+{'loss': 0.0245, 'grad_norm': 0.21719680726528168, 'learning_rate': 5.60178399201805e-07, 'epoch': 7.86}
+{'eval_loss': 0.056750763207674026, 'eval_runtime': 87.352, 'eval_samples_per_second': 4.11, 'eval_steps_per_second': 1.03, 'epoch': 7.99}
+{'train_runtime': 9267.2805, 'train_samples_per_second': 1.229, 'train_steps_per_second': 0.077, 'train_loss': 2.0548957172739373, 'epoch': 7.99}
+Fine-tuning completed! Model saved.
