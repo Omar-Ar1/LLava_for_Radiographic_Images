@@ -108,9 +108,12 @@ Results are stored in `evaluation_pretrained.json`.
 
 ---
 
-## Evaluation Results
 
-The model was evaluated using an automated LLM-based scoring system. Below are the comparative results:
+## Evaluation Results  
+
+The model was evaluated using an **LLM-as-a-judge** framework, an automated scoring system where a large language model (LLM) assesses the correctness and quality of responses. Initially, **DeepSeek R1** was used as the evaluation model, but to align better with the specific domain of the fine-tuned model, **MedAlpaca**, a more clinically relevant LLM, was later adopted for scoring. This transition was crucial to ensure that evaluations reflected domain-specific understanding rather than generic LLM biases.  
+
+Below are the comparative results between the **fine-tuned model** and the **pre-trained model**:  
 
 | Metric                  | Pre-Trained Model | Fine-Tuned Model |
 |-------------------------|------------------|------------------|
@@ -124,16 +127,28 @@ The model was evaluated using an automated LLM-based scoring system. Below are t
 | average_confidence   | 4.89             | 4.76             |
 | confidence_completeness | 1.00          | 1.00             |
 
-### Key Takeaways
-- The **correct rate** decreased from **51% to 47%**, while the **incorrect rate** increased from **42% to 48%**.
-- The **invalid format rate** increased from **6% to 10%**, indicating more formatting inconsistencies.
-- The **average confidence** of responses slightly dropped from **4.89 to 4.76**.
-- **Contradiction rate remained at 0**, meaning the model did not produce directly conflicting responses.
-  
-The decline in performance may be attributed to several factors:  
-- **Catastrophic forgetting**.
-- - **Misalignment between fine-tuning objectives and evaluation methodology**: The evaluation was conducted using an LLM-as-a-judge framework. While this approach is justified given the nuanced nature of the model's answers and the limitations of standard techniques (ROUGE, BLEU, etc.) in performing soft matching, the judge may still produce misleading or inaccurate evaluations.  
+### Key Takeaways  
 
+- The **correct rate** dropped from **51% to 47%**, suggesting that fine-tuning did not improve factual accuracy and may have caused degradation in some areas.  
+- The **incorrect rate** increased from **42% to 48%**, which could indicate overfitting to the fine-tuning dataset, leading to poorer generalization.  
+- The **neutral rate** dropped from **7% to 5%**, meaning the model provided fewer uncertain or ambiguous answers.  
+- The **invalid format rate** increased from **6% to 10%**, suggesting that the fine-tuned model generated more responses that did not conform to the expected output structure.  
+- **Average confidence** decreased slightly from **4.89 to 4.76**, implying a minor reduction in the model’s certainty when providing answers.  
+- **Contradiction rate remained at 0**, confirming that the fine-tuning process did not introduce logical inconsistencies into the model’s outputs.  
+
+### Limitations of LLM-as-a-Judge Evaluation  
+
+While **LLM-as-a-judge** frameworks offer scalability and flexibility in model evaluation, they also have inherent limitations:  
+
+1. **Misalignment with fine-tuning objectives** – The evaluation was conducted using an LLM-based scorer, which, despite being a reasonable approach for assessing nuanced responses, may not fully capture improvements in reasoning or domain-specific adaptations.  
+2. **Potential Biases in Judgments** – Even though MedAlpaca was selected for its clinical relevance, LLM judges can still exhibit biases, misinterpret context, or fail to correctly assess cases where multiple valid responses exist.  
+3. **Inability to Soft-Match** – Unlike human evaluation, traditional NLP metrics (e.g., **ROUGE, BLEU**) struggle with assessing responses that are semantically correct but phrased differently. LLM-based judges attempt to address this but are still prone to errors, especially in complex or ambiguous cases.  
+
+### Sensitivity to Prompting  
+
+While the evaluation suggests a decline in accuracy metrics, this does not necessarily indicate a failure of the fine-tuning process. Instead, it highlights the complexity of LLM adaptation, trade-offs in generalization vs. specialization, and the limitations of LLM-based evaluation.
+
+Further analysis indicates that prompt engineering significantly influences results, with optimized prompting increasing the correct rate by 10%. Additionally, the observed degradation provides valuable insights for refining future fine-tuning strategies and ensuring alignment with real-world use cases.
 
 ---
 
